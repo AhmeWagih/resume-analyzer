@@ -1,4 +1,4 @@
-import { prepareInstructions } from "../../constants";
+import { prepareInstructions, AIResponseFormat } from "../../constants";
 import { convertPdfToImage } from "lib/pdfToImage";
 import { usePuterStore } from "lib/puter";
 import { generateUUID } from "lib/utils";
@@ -72,7 +72,7 @@ const Upload = () => {
     setStatusText("Analyzing...");
     const feedback = await ai.feedback(
       uploadedFile.path,
-      prepareInstructions({ jobTitle, jobDescription })
+      prepareInstructions({ jobTitle, jobDescription, AIResponseFormat })
     );
     if (!feedback) return setStatusText("Error: Failed to analyze resume");
     const feedbackText =
@@ -84,6 +84,7 @@ const Upload = () => {
     await kv.set(`resume:${uuid}`, JSON.stringify(data));
     setStatusText("Analysis complete, redirecting...");
     console.log(data);
+    navigate(`/resume/${uuid}`);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -142,7 +143,7 @@ const Upload = () => {
                   placeholder="Write a clear & concise job description with responsibilities & expectations..."
                   name="job-description"
                   id="job-description"
-                  rows={3}
+                  rows={8}
                   className="resize-none"
                 ></textarea>
               </div>
