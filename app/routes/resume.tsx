@@ -65,6 +65,22 @@ const Resume = () => {
           </Link>
           <div className="flex justify-between items-center">
             <div className="flex items-center justify-center gap-1">
+              <p className="text-gray-600 font-medium text-xl">{companyName}</p>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.2002 13.5999L11.8002 9.9999L8.2002 6.3999"
+                  stroke="#717179"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
               <p className="text-gray-600 font-medium text-xl">{jobTitle}</p>
               <svg
                 width="20"
@@ -76,19 +92,14 @@ const Resume = () => {
                 <path
                   d="M8.2002 13.5999L11.8002 9.9999L8.2002 6.3999"
                   stroke="#717179"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
               <p className="text-gray-800 font-medium text-xl">Resume Review</p>
             </div>
           </div>
-        </div>
-        <div className="w-10 h-10 rounded-full bg-gray-100 shadow-lg flex items-center justify-center">
-          <p className="text-gray-500 font-semibold text-sm">
-            {companyName?.slice(0, 1).toUpperCase()}
-          </p>
         </div>
       </nav>
       <div className="flex flex-row w-full max-lg:flex-col-reverse">
