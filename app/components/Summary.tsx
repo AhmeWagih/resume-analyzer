@@ -27,7 +27,7 @@ const Summary = ({ feedback }: { feedback: Feedback }) => {
   return (
     <div className="bg-white rounded-2xl shadow-md w-full">
       <div className="flex flex-row text-center p-4 gap-8">
-        <ScoreGauge score={feedback.overallScore} />
+        <ScoreGauge score={feedback?.overallScore} />
         <div className="flex text-left flex-col gap-2">
           <h2 className="text-2xl font-bold">Your Resume Score</h2>
           <p className="text-sm text-gray-500">

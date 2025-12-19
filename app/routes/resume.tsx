@@ -57,12 +57,12 @@ const Resume = () => {
     <main className="pt-0!">
       <nav className="flex justify-between items-center p-4 border-b border-gray-200">
         <div className="flex flex-row gap-4">
-          <Link to="/" className="back-button">
+          {/* <Link to="/" className="back-button">
             <img src="/icons/back.svg" alt="back" className="w-2.5 h-2.5" />
             <span className="text-gray-800 text-sm font-semibold">
               Back to Homepage
             </span>
-          </Link>
+          </Link> */}
           <div className="flex justify-between items-center">
             <div className="flex items-center justify-center gap-1">
               <p className="text-gray-600 font-medium text-xl">{companyName}</p>
@@ -122,8 +122,8 @@ const Resume = () => {
             <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
               <Summary feedback={feedback} />
               <ATS
-                score={feedback.ATS.score || 0}
-                suggestions={feedback.ATS.tips || []}
+                score={feedback?.ATS?.score || 0}
+                suggestions={feedback?.ATS?.tips || []}
               />
               <Details feedback={feedback} />
             </div>

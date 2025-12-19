@@ -388,7 +388,33 @@ export const usePuterStore = create<PuterStore>((set, get) => {
       setError("Puter.js not available");
       return;
     }
-    return puter.kv.delete(key);
+    if (!puter.kv) {
+      setError("KV storage not available");
+      return;
+    }
+    
+    // Type assertion to access methods that might exist at runtime
+    const kv = puter.kv as any;
+    
+    // Check what methods are available on kv
+    const kvMethods = Object.keys(kv);
+    console.log("Available KV methods:", kvMethods);
+    
+    // Try different possible method names
+    if (typeof kv["delete"] === "function") {
+      return kv["delete"](key);
+    }
+    if (typeof kv["del"] === "function") {
+      return kv["del"](key);
+    }
+    if (typeof kv["remove"] === "function") {
+      return kv["remove"](key);
+    }
+    
+    // Fallback: Set to empty string to effectively delete
+    // Some KV stores don't have delete, so setting to empty/null works
+    console.warn("KV delete method not found, using set to empty string as fallback");
+    return puter.kv.set(key, "");
   };
 
   const listKV = async (pattern: string, returnValues?: boolean) => {
