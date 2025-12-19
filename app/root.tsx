@@ -44,6 +44,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <div className="fixed bottom-0 right-0 p-4">
+          <button className=''>
+            <img src="/public/logo.png" alt="Debug" className="w-8 h-5" />
+          </button>
+        </div>
       </body>
     </html>
   );
