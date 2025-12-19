@@ -18,8 +18,8 @@ const Auth = () => {
   const next = location.search.split("next=")[1];
   const navigate = useNavigate();
   useEffect(() => {
-    if (auth.isAuthenticated) navigate(next);
-  }, [auth.isAuthenticated, next]);
+    if (auth.isAuthenticated) navigate(next || "/");
+  }, [auth.isAuthenticated, next, navigate]);
   return (
     <main className="bg-[url('/images/bg-auth.svg')] bg-cover flex items-center justify-center">
       <div className="gradient-border shadow-lg">
