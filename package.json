@@ -1,0 +1,20 @@
+{
+  "name": "resume-analyzer",
+  "version": "1.0.0",
+  "description": "An AI-powered, browser-native application designed to analyze resumes, provide actionable optimization advice, and calculate ATS compatibility scores. Tailor your resume for specific job descriptions and get side-by-side feedback in real-time.",
+  "homepage": "https://github.com/AhmeWagih/resume-analyzer#readme",
+  "bugs": {
+    "url": "https://github.com/AhmeWagih/resume-analyzer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmeWagih/resume-analyzer.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

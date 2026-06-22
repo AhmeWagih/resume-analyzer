@@ -1,0 +1,369 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+:root {
+  --ink:       #0D0B09;
+  --surface:   #141210;
+  --raised:    #1E1A17;
+  --border:    #2E2825;
+  --rust:      #C8614A;
+  --rust-dark: #A84E3A;
+  --stone:     #D0CBC4;
+  --muted:     #6B6260;
+  --sage:      #7EAA8A;
+  --amber:     #C49A5A;
+  --deep-red:  #B85555;
+
+  --font-display: "Fraunces", serif;
+  --font-body:    "Inter", sans-serif;
+}
+
+@theme {
+  --font-display: "Fraunces", serif;
+  --font-body:    "Inter", sans-serif;
+}
+
+/* ── Base ──────────────────────────────────────── */
+
+html,
+body {
+  background-color: var(--ink);
+  color: var(--stone);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Reset global element styles ───────────────── */
+/* Override old global rules that conflict with the new design */
+
+h1, h2, h3, h4, h5, h6 {
+  all: unset;
+  display: block;
+}
+
+label {
+  all: unset;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+input, textarea {
+  all: unset;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--stone);
+  background-color: var(--raised);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--rust);
+  outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--muted);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+/* ── Film Grain Overlay ────────────────────────── */
+
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Buttons ───────────────────────────────────── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--rust);
+  color: var(--stone);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--rust-dark);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--stone);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.btn-ghost:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+}
+
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--stone);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.btn-danger:hover {
+  border-color: var(--deep-red);
+  color: var(--deep-red);
+}
+
+.btn-danger:disabled,
+.btn-ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Score Color Utility ───────────────────────── */
+
+.score-sage  { color: var(--sage); }
+.score-amber { color: var(--amber); }
+.score-red   { color: var(--deep-red); }
+
+/* ── Scrollbar ─────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* ── Loading Spinner ───────────────────────────── */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-top-color: var(--rust);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* ── Fade In ───────────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out both;
+}
+@theme {
+  --color-error: #ffb4ab;
+  --color-tertiary-container: #2ba192;
+  --color-outline-variant: #56423e;
+  --color-error-container: #93000a;
+  --color-on-primary-container: #560d01;
+  --color-tertiary-fixed-dim: #6cd8c7;
+  --color-on-secondary-fixed: #281800;
+  --color-inverse-surface: #f1deda;
+  --color-on-tertiary-fixed: #00201c;
+  --color-on-background: #f1deda;
+  --color-primary-fixed-dim: #ffb4a4;
+  --color-on-secondary-fixed-variant: #604107;
+  --color-inverse-on-surface: #392e2b;
+  --color-surface-tint: #ffb4a4;
+  --color-secondary-fixed-dim: #edbf7b;
+  --color-on-tertiary-container: #00302a;
+  --color-background: #1a110f;
+  --color-surface-container-lowest: #150c0a;
+  --color-outline: #a48b86;
+  --color-primary: #ffb4a4;
+  --color-on-primary-fixed: #3d0600;
+  --color-surface-bright: #423734;
+  --color-surface-container-low: #231917;
+  --color-on-secondary-container: #daae6c;
+  --color-surface-container-highest: #3e3230;
+  --color-surface-container-high: #322825;
+  --color-on-surface-variant: #dcc0ba;
+  --color-on-primary-fixed-variant: #7f2a18;
+  --color-surface-variant: #3e3230;
+  --color-on-error: #690005;
+  --color-on-tertiary: #003731;
+  --color-on-error-container: #ffdad6;
+  --color-on-surface: #f1deda;
+  --color-secondary: #edbf7b;
+  --color-on-tertiary-fixed-variant: #005047;
+  --color-surface: #1a110f;
+  --color-secondary-container: #604107;
+  --color-on-secondary: #442c00;
+  --color-tertiary-fixed: #89f5e3;
+  --color-inverse-primary: #9e412d;
+  --color-on-primary: #601405;
+  --color-surface-container: #271d1b;
+  --color-secondary-fixed: #ffddaf;
+  --color-tertiary: #6cd8c7;
+  --color-surface-dim: #1a110f;
+  --color-primary-container: #de7259;
+  --color-primary-fixed: #ffdad3;
+
+  --spacing-margin-desktop: 64px;
+  --spacing-gutter: 24px;
+
+  --font-display-md: "Fraunces";
+  --font-headline-sm: "Fraunces";
+  --font-body-lg: "Inter";
+  --font-caption: "Inter";
+  --font-subheading-italic: "Fraunces";
+  --font-body-md: "Inter";
+  --font-ui-label: "Inter";
+  --font-display-lg: "Fraunces";
+
+  --text-display-md: 36px;
+  --text-display-md--line-height: 1.2;
+  --text-display-md--font-weight: 700;
+
+  --text-headline-sm: 24px;
+  --text-headline-sm--line-height: 1.3;
+  --text-headline-sm--font-weight: 700;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--font-weight: 400;
+
+  --text-caption: 12px;
+  --text-caption--line-height: 1.4;
+  --text-caption--font-weight: 500;
+
+  --text-subheading-italic: 20px;
+  --text-subheading-italic--line-height: 1.4;
+  --text-subheading-italic--font-weight: 300;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.5;
+  --text-body-md--font-weight: 400;
+
+  --text-ui-label: 14px;
+  --text-ui-label--line-height: 1;
+  --text-ui-label--letter-spacing: 0.05em;
+  --text-ui-label--font-weight: 600;
+
+  --text-display-lg: 48px;
+  --text-display-lg--line-height: 1.1;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 900;
+}
+
+.border-sep {
+  border-color: #2E2825;
+}
+.bg-card {
+  background-color: #141210;
+}
+.bg-hover:hover {
+  background-color: #1E1A17;
+}
+.score-sage {
+  background-color: rgba(108, 216, 199, 0.15);
+  border: 1px solid #6cd8c7;
+  color: #6cd8c7;
+}
+.score-amber {
+  background-color: rgba(237, 191, 123, 0.15);
+  border: 1px solid #edbf7b;
+  color: #edbf7b;
+}
+.score-red {
+  background-color: rgba(255, 180, 171, 0.15);
+  border: 1px solid #ffb4ab;
+  color: #ffb4ab;
+}
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  vertical-align: middle;
+}
